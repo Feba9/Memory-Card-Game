@@ -1,0 +1,14 @@
+#grid {
+   display: flex;
+   flex-wrap: wrap; /* Több sorba helyezés */
+   width: 650px;    /* Növelt konténer szélesség */
+   height: auto;    /* Automatikus magasság */
+}
+
+#grid img {
+   width: 50px;
+   height: 50px;
+   margin: 5px;     /* Kártyák közötti térköz */
+}
+
+
