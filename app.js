@@ -1,4 +1,4 @@
-   const cardArray  = [
+const cardArray  = [
    {
       name: 'cherries',
       img: 'images/cherries.png',
@@ -88,10 +88,10 @@ createBoard()
       if (optionOneId == optionTwoId){
          cards[optionOneId].setAttribute('src', 'images/blank.png')
          cards[optionTwoId].setAttribute('src', 'images/blank.png')
-            alert('You have a pair! ')
+         showResultMessage('You have a pair!');
    }
       if (cardsChosen[0] === cardsChosen[1]){
-            alert('Great job , MATCH!')
+         showResultMessage('Great job, MATCH!');
 
          cards[optionOneId].setAttribute('src', 'images/white.png')
          cards[optionTwoId].setAttribute('src', 'images/white.png')
@@ -101,18 +101,37 @@ createBoard()
    } else {
          cards[optionOneId].setAttribute('src', 'images/blank.png')
          cards[optionTwoId].setAttribute('src', 'images/blank.png')
-            alert('Sorry, Try again. ')
-
+         showResultMessage('Sorry, Try again.');
    }
-   resultDisplay.textContent = cardsWan.length
+
+   
+    
+   //resultDisplay.textContent = cardsWan.length
       cardsChosen = []
       cardsChosenIds = []
 
 if (cardsWan.length == cardArray.length/2) {
-   resultDisplay.innerHTML = 'Congratulations! You find them all!'
+   showResultMessage('Congratulations! You find them all!');
 }
 
    }
+
+   function showResultMessage(message) {
+      resultDisplay.textContent = message;
+      setTimeout(function() {
+          resultDisplay.textContent = cardsWan.length;
+          // Kártyák megfordítása csak az üzenet törlése után
+          const cards = document.querySelectorAll('img');
+          cards.forEach(card => {
+              card.setAttribute('src', 'images/blank.png');
+              card.addEventListener('click', flipCard);
+          });
+      }, 1500);
+  }
+
+   function showResultMessage(message) {
+      resultDisplay.textContent = message;
+  }
 
 function flipCard( ){
    console.log(cardArray)
